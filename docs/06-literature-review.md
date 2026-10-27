@@ -37,7 +37,9 @@ in a message or trace*. Excluded: vendor explainers, blog posts, tutorials, and 
 multi-agent topology with no payload or message-representation component.
 
 **Screening result.** 80 hits, ~35 unique after deduplication, 15 retained for abstract-level
-screening, 6 read in full or near-full. Retained items are in section 5.
+screening. **Five papers were then read in full** (DALA, MOC, Interlat, the communication survey,
+ACDL) plus the primary specifications already covered in `01-state-of-the-art.md`. Retained items are
+in section 5.
 
 **Depth labels** are as before: `[read]` full text or the substantive sections; `[abstract]` abstract
 and metadata only; `[unverified]` from secondary sources.
@@ -269,6 +271,62 @@ never by *claim quality*.
 
 ---
 
+### 5.6 The communication survey and ACDL - read in full
+
+Both were cited at abstract level in the first draft and were read in full on 2026-10-27.
+
+**Beyond Self-Talk** (arXiv:2502.14321v3). A communication-centric framework that splits
+system-level communication (architecture, goal, protocol) from system-internal communication
+(strategy, paradigm, object, content). Its content taxonomy in section 4.4 is the most useful part
+for us: content is either *explicit* (natural language; code and structured data) or *implicit*
+(behavioural feedback; environmental signals). That is a taxonomy of **form**, with no dimension for
+the status of the claim being carried - nothing about whether an assertion is observed or assumed,
+where it came from, or who was entitled to make it. Three independent taxonomies now agree on this
+shape-only classification (this one, the protocol taxonomy arXiv:2606.19135, and SILP's schema).
+
+Two passages matter more than the taxonomy.
+
+Section 5.5, on security, names provenance as a requirement of the communication layer itself:
+
+> "defence techniques originally designed for standalone LLMs must be embedded within the
+> communication layer itself ... requires cryptographically grounded protocols that combine
+> end-to-end encryption, fine-grained authentication, adaptive key management, and provenance
+> tracking."
+
+Section 5.6, on evaluation, states exactly the gap our benchmark addresses:
+
+> "Current leaderboards also remain agent-centric: they report per-agent task accuracy or reward but
+> rarely capture system-level properties, including coordination efficiency, communication bandwidth
+> and latency, robustness to stale or deceptive messages, and group-level fairness and safety."
+
+"Robustness to stale or deceptive messages" is the E2 problem stated in one phrase by a survey that
+does not propose a representation to solve it.
+
+Section 5.3 lists the protocol landscape we should be aware of: "MCP, A2A, ANP, ACP, AITP, and
+AConP" and makes the interoperability argument for a unified protocol. Four of those names were not in
+our first draft; they belong in the related-work section even though none of them specifies claim
+semantics.
+
+**A Language for Describing Agentic LLM Contexts (ACDL)**, CAIS '26, arXiv:2605.01920v1. A domain
+specific language for describing how the LLM context is constructed at each step: a context is "a
+sequence of role messages" (user, assistant, system, tool), each holding a sequence of information
+pieces, indexed by discrete time (`@T`), with conditional and iterative structure and references to
+elements of earlier contexts.
+
+Its scope statement settles the question of overlap:
+
+> "It is not intended to describe how state and history were produced, nor other aspects of the
+> system: agentic logic, tool implementations, retrieval mechanisms, model behavior and so on."
+
+And its stated limitations include multi-agent systems with independent clocks:
+
+> "ACDL currently lacks a clean way to describe multi-agent systems in which the different agents
+> have separate clocks ... yet all have access to some shared mutable state."
+
+**Consequence.** ACDL describes the context an agent *consumes*; this programme describes the message
+an agent *sends*. Different object, no overlap, and ACDL's time-indexed references are the same
+primitive E2 and E4 need - worth citing as prior art for the *mechanism*, not the *purpose*.
+
 ## 6. What survived, what narrowed
 
 | Claim in v0.2 | Status after the sweep | Action |
@@ -277,6 +335,7 @@ never by *claim quality*.
 | E2 provenance is unaddressed | **Narrowed.** Execution provenance is an active field with a v6 survey and a nine-relation taxonomy. Message-level claim provenance is not. | Restate E2 as "provenance *in the payload*, not in the trace"; cite 2606.04990 and adopt its vocabulary |
 | E1 epistemic typing is unaddressed | **Narrowed.** Uncertainty quantification and propagation are active fields; the "one confidence number is not enough" finding is already published. | Keep the typing requirement; cite 2609.07395 for the calibration claim; adopt TC-ECE as the instrument |
 | E3 authority is unaddressed | **Narrowed.** IAM-side authorisation is formal and advanced; transport security is solved. | Restate as payload-carried authority that survives forwarding; do not claim to solve authentication |
+| "Payload taxonomies classify content by type" | **Confirmed, and it is our opening.** Three independent taxonomies (survey section 4.4, protocol taxonomy 2606.19135, SILP schema) classify payload by form only: language vs code vs hybrid vs schema-negotiated. None has a claim-status dimension. | State it as the core observation of the paper, citing all three |
 | "No benchmark measures total cost across representations" | **Weakened.** ProtocolBench measures protocol overhead/latency; MOC reports token counts. | Position our benchmark as adding the *payload representation* axis; reuse ProtocolBench's axes where they overlap |
 | H4: compact encoding does not automatically reduce total cost | **Supported by external evidence.** MOC raises total tokens 18.1% while calling itself efficient. | Promote H4 from "sceptical hypothesis" to "hypothesis with a published precedent" |
 
@@ -297,8 +356,8 @@ adding the claim-quality fields changes neither total cost nor qualification los
 
 1. **One search backend.** No ACM DL, Scopus, IEEE Xplore or Web of Science. Papers published only in
    those venues will be missing; the "no work found on E4" statement is therefore bounded by this.
-2. **Abstract-level for eight items.** Sections 5.1 to 5.5 are labelled `[abstract]`; no quantitative
-   claim in this document rests on them beyond what the abstracts state.
+2. **Abstract-level for the items in sections 5.1 to 5.5.** Only sections 2 to 5.6 are `[read]`; no
+   quantitative claim in this document rests on an abstract beyond what that abstract states.
 3. **English only.** Non-English work is excluded by construction.
 4. **Screening was single-reviewer**, by definition here, with no second coder and therefore no
    inter-rater agreement to report.

@@ -71,13 +71,15 @@ Papers), pp. 27106-27129. DOI <https://doi.org/10.18653/v1/2026.acl-long.1248>
 *Beyond Self-Talk: A Communication-Centric Survey of LLM-Based Multi-Agent Systems.* arXiv:2502.14321
 (v3, 2026-05-26); accepted by Frontiers of Computer Science.
 DOI <https://doi.org/10.1007/s11704-026-50857-y> · <https://arxiv.org/abs/2502.14321>
-*Read: abstract. Full text being extracted for the taxonomy and challenge lists; see `06-literature-review.md`.*
+*Read: full text (taxonomy, section 4.4 content split, section 5.3 protocol list, sections 5.5-5.6
+challenges) on 2026-10-27. See `06-literature-review.md` section 5.6.*
 
 **[ACDL]** Peleg Pelc, N., Kaminka, G. A., Goldberg, Y. *A Language for Describing Agentic LLM
 Contexts.* CAIS '26 (ACM Conference on AI and Agentic Systems), May 2026.
 DOI <https://doi.org/10.1145/3786335.3813126> · <https://arxiv.org/abs/2605.01920> ·
 <http://www.acdlang.org>
-*Read: abstract and bibliographic record.*
+*Read: full text (scope statement, context model, limitations) on 2026-10-27. See
+`06-literature-review.md` section 5.6.*
 
 ## Works added by the systematic sweep (2026-10-27)
 
@@ -139,7 +141,7 @@ All entries below are published on arXiv or in the venue stated. Abstract-level 
 | Date | Action |
 |---|---|
 | 2026-10-27 | Initial Phase 0 sweep: SILP datatracker page and full draft; NLIP spec index; FIPA SC00061G via web archive (live endpoint 502); DALA and MOC abstract pages; A2A v1.0.0 spec; MCP 2026-07-28 spec; Interlat, Survey, ACDL abstract pages |
-| 2026-10-27 | Systematic sweep, 8 recorded query strings, 80 hits, 15 retained, 6 read in full (DALA, MOC, Interlat plus three partials). Promoted DALA, MOC, Interlat to `[read]`. Added 15 works. Method and screening: `06-literature-review.md` |
+| 2026-10-27 | Systematic sweep, 8 recorded query strings, 80 hits, 15 retained. Promoted DALA, MOC, Interlat, the communication survey and ACDL to `[read]` after full-text reading. Added 15 works. Method and screening: `06-literature-review.md` |
 
 ## Known gaps in this list
 

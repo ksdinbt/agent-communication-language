@@ -270,6 +270,20 @@ communication (architecture, goals, protocols) with internal communication (stra
 objects, content); identifies communication efficiency, security vulnerabilities, inadequate
 benchmarking and scalability as open challenges.
 
+**Read in full 2026-10-27.** Taxonomy: system-level communication (architecture, goal, protocol)
+versus system-internal (strategy, paradigm, object, content); section 4.4 splits content into
+*explicit* (natural language; code and structured data) and *implicit* (behavioural feedback;
+environmental signals) - a taxonomy of **form**, with no dimension for claim status, provenance or
+authority. Section 5.3 names the protocol landscape as "MCP, A2A, ANP, ACP, AITP, and AConP". Two
+passages matter more than the taxonomy:
+
+- On security: the communication layer itself "requires cryptographically grounded protocols that
+  combine end-to-end encryption, fine-grained authentication, adaptive key management, and provenance
+  tracking" (section 5.5).
+- On evaluation: leaderboards "rarely capture system-level properties, including coordination
+  efficiency, communication bandwidth and latency, robustness to stale or deceptive messages" (section
+  5.6). That is E2 stated as an open problem by a survey that proposes no representation for it.
+
 Read this before writing any "related work" section. If a claim in this repository contradicts the
 survey, the survey is probably right.
 
@@ -279,6 +293,13 @@ Peleg Pelc, Kaminka, Goldberg, *A Language for Describing Agentic LLM Contexts* 
 arXiv:2605.01920. **[read: abstract]** A language for specifying the structure and dynamics of LLM
 input contexts - role message sequences, dynamic content, time-indexed references, conditional and
 iterative structure - independent of implementation.
+
+**Read in full 2026-10-27.** ACDL describes the context window an agent *consumes*: a sequence of
+role messages (user, assistant, system, tool), each with information pieces, indexed by discrete time
+`@T`, with conditional and iterative structure and references to earlier contexts. Its scope
+statement is explicit: "It is not intended to describe how state and history were produced, nor other
+aspects of the system: agentic logic, tool implementations, retrieval mechanisms, model behavior".
+Its stated limitations include multi-agent systems whose agents "have separate clocks".
 
 ACDL describes *contexts*, not messages between agents. It is worth knowing because it shows the
 design space is being colonised quickly, and because its time-indexed references are the same
