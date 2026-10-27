@@ -164,3 +164,12 @@ The overhead probe initially scored a receiver as having lost the caveat when it
 daily split instead of restating it. Restating a caveat while requesting the data behind it is polite,
 not correct; the rubric now accepts the expansion request as compliance.
 
+**D-025 · 2026-10-27 · The programme's claim narrows from efficiency to provenance and caveats**
+Six runs, 239 calls, $0.1087: the typed payload is dearer per turn at one and eight turns, has a much
+flatter cost drift, and preserves planted qualifiers where prose loses them. It does not make a receiver
+notice a caveat and cannot certify a figure: in one model's hands a fully valid response carried exactly
+double the correct number labelled `OBSERVED`. The claim going forward is that typing makes caveats
+transportable and checkable, not that it saves money; the efficiency question stays open and is
+currently unfavourable at small scale.
+*Would be overturned by:* sessions of 15-25 turns where the crossover appears and behaviour holds.
+

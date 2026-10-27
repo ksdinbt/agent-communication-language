@@ -29,6 +29,7 @@ natural language or JSON.
 | [`docs/10-contract-probe.md`](docs/10-contract-probe.md) | Receiver contract: 48/48 valid responses, one fabricated figure, and reasoning at 74% of the bill |
 | [`docs/11-length-probe.md`](docs/11-length-probe.md) | Does the payload gap grow with session length? Two quantities, and a crossover not yet reached |
 | [`docs/12-overhead.md`](docs/12-overhead.md) | The convention overhead, attacked: 67% smaller prompt, and why a worked example beats a schema |
+| [`docs/13-final-outcome.md`](docs/13-final-outcome.md) | **Start here for the conclusion:** what survived, what did not, and what the MVP must do next |
 | [`spec/ir-extension-v0.1.md`](spec/ir-extension-v0.1.md) | E4 specification: deferred detail, `!EXPAND`, degradation to plain SILP |
 | [`skills/typed-payload-v0/SKILL.md`](skills/typed-payload-v0/SKILL.md) | The agent-facing skill: seven fields, three rules, one counter-example |
 | [`docs/REFERENCES.md`](docs/REFERENCES.md) | Every source with version, status and verification date |
