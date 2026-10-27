@@ -100,8 +100,17 @@ A4 would be penalised for carrying fields A5 silently drops. The projection belo
   extension that the codec actually carries. Putting them in `meta` would inherit a silent data-loss
   bug. This is a design constraint discovered by running the code, not by reading the draft.
 
-**Two bugs to report upstream** (courtesy note, not a blocker): the `>`+`%` constraint parse failure
-in the code frontend, and auth errors being classified as infrastructure errors and retried.
+**Two bugs reported upstream** (courtesy, not a blocker). Both were verified to a root cause before
+reporting, with minimal reproductions and suggested patches:
+
+| Issue | Defect | Root cause |
+|---|---|---|
+| [#1](https://github.com/Juwan-Hwang/polyglotIR/issues/1) | `disk>90%` compiles but does not decode | `code.py:177`, value character class `[\w.]+` excludes `%` |
+| [#2](https://github.com/Juwan-Hwang/polyglotIR/issues/2) | `is_infra_error("...401")` returns `True`, contradicting its docstring and two failing tests | `models.py:102-114` lists `401|403` as retryable infrastructure errors |
+
+If #1 is fixed upstream, the round-trip result on this commit improves from 52/54 to 54/54 under the
+project's own definition; it does not change the projection result, which is why D-014 stands either
+way.
 
 ## 5. Residual unknowns
 
@@ -124,4 +133,5 @@ in the code frontend, and auth errors being classified as infrastructure errors 
 | Round-trip under project's own definition | 52/54 |
 | Round-trip under full-IR equality | 0/54 |
 | Usable as benchmark arm A5 | **yes, with a declared semantic projection** |
+| Defects reported to the author | 2 (issues #1 and #2) |
 | Safe to extend via `meta` | **no** |
