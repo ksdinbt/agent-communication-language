@@ -76,7 +76,7 @@ answers to slightly different questions: the `code` frontend restores `subject` 
 serialisation do not (so a message on a wire loses it). The `json` frontend round-trips the field
 properly.
 
-Reported upstream as issue #3. For this programme the serialised definition is the one that matters,
+Reported upstream as [issue #3](https://github.com/Juwan-Hwang/polyglotIR/issues/3). For this programme the serialised definition is the one that matters,
 which is why the benchmark scores on the projection and not on IR identity.
 
 ### 3.2 Against the promise in the docstring - 0/54
@@ -123,7 +123,7 @@ reporting, with minimal reproductions and suggested patches:
 |---|---|---|
 | [#1](https://github.com/Juwan-Hwang/polyglotIR/issues/1) | `disk>90%` compiles but does not decode | `code.py:177`, value character class `[\w.]+` excludes `%` |
 | [#2](https://github.com/Juwan-Hwang/polyglotIR/issues/2) | `is_infra_error("...401")` returns `True`, contradicting its docstring and two failing tests | `models.py:102-114` lists `401|403` as retryable infrastructure errors |
-| #3 (filed 2026-10-27, pending number) | extra constraint fields survive only in memory: 36/54 on serialised documents | `code.py` restores them with `object.__setattr__`, so `model_dump()` drops them |
+| [#3](https://github.com/Juwan-Hwang/polyglotIR/issues/3) | extra constraint fields survive only in memory: 36/54 on serialised documents | `code.py` restores them with `object.__setattr__`, so `model_dump()` drops them |
 
 If #1 is fixed upstream, the round-trip result on this commit improves from 52/54 to 54/54 under the
 project's own definition; it does not change the projection result, which is why D-014 stands either
