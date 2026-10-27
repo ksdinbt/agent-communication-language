@@ -45,3 +45,33 @@ stays private: an open spec with no evidence behind it attracts exactly the wron
 **D-008 · 2026-10-27 · Stopping conditions declared in advance**
 Four conditions in `02-mvp-scope.md` end the project with a written finding. Declaring them before
 the run is what makes "no advantage over SILP" a result rather than a defeat.
+
+**D-009 · 2026-10-27 · E2 and E1 reframed after the systematic sweep**
+The sweep found execution provenance to be an active research area (survey arXiv:2606.04990v6, nine
+provenance relations) and uncertainty quantification to be established, including the finding that one
+confidence score is insufficient (arXiv:2609.07395). E2 is therefore restated as provenance **in the
+payload**, not in the trace; E1 keeps only the requirement that epistemic type be a mandatory message
+field. Claims of the form "nobody does this" are removed from all documents.
+*Would be overturned by:* a paper that specifies claim provenance inside an inter-agent message schema.
+
+**D-010 · 2026-10-27 · E3 does not claim authentication**
+Authorisation frameworks (arXiv:2606.03518) and zero-trust transport security (arXiv:2610.23078) are
+advanced and out of scope. E3 is limited to an authority axis carried in the payload that survives
+forwarding.
+*Would be overturned by:* an existing payload specification that already distinguishes propose, request
+and authorise at message level.
+
+**D-011 · 2026-10-27 · E4 is the primary novel element and the cheapest to test**
+No work found in which the sender advertises resolvable references and the receiver requests expansion.
+Nearest cousins named in the paper: MCP elicitation (human), A2A streaming/artifacts, Proxifield's
+"information need" routing signal. E4 drives the MVP.
+*Would be overturned by:* a paper implementing sender-advertised, receiver-initiated expansion.
+
+**D-012 · 2026-10-27 · DALA is cited, never benchmarked against**
+DALA is trained (MAPPO on a 2% split) while our arms are zero-shot, so a direct comparison would be
+invalid. It is cited for the volume finding and for its cost table, not as an arm.
+*Would be overturned by:* a zero-shot ablation of DALA in its own paper.
+
+**D-013 · 2026-10-27 · Adopt TC-ECE for epistemic calibration instead of inventing a metric**
+arXiv:2609.07395 supplies a calibration instrument and the empirical reason for E1. Reimplementing it
+would duplicate published work and weaken comparability.

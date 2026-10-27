@@ -141,8 +141,19 @@ tradable resource: a centralised auction in which agents bid for the right to sp
 predicted value density of their message. Reported: 84.32% on MMLU, 91.21% pass@1 on HumanEval,
 6.25M tokens total, and an emergent "strategic silence".
 
+**Read in full 2026-10-27.** Method: actor network proposes candidate messages, critic scores value
+density (utility over cost), density is the bid in a budget-constrained VCG auction for speaking rights,
+actor-critic trained with MAPPO. All agents `gpt-4-1106-preview`; policy learned on a 2% split, then
+frozen. Accuracy: MMLU 82.14 to 84.32, GSM8K 85.40 to 96.18, HumanEval 71.68 to 91.21 (pass@1),
+MATH-500 73.72 to 83.42. Cost: 3.80e5 tokens on MMLU against 9.60e5 for AgentPrune-R, and 6.20e6 on
+GSM8K against 2.60e7 for PHP.
+
+*Note on the record:* the abstract states "only 6.25 million tokens" while the cost table reports
+6.20e6 for GSM8K. Cite the table.
+
 **Assessment.** DALA is a *policy layer*: it decides **whether and when** an agent speaks. It is not
-a language and does not touch encoding. It is nevertheless the most direct evidence for the framing
+a language and does not touch encoding. It is also **trained, not zero-shot**, so it is cited here and
+never used as a benchmark arm (decision D-012). It is nevertheless the most direct evidence for the framing
 in this programme, because it demonstrates empirically that the dominant term in communication cost
 is often *volume* rather than *per-message size*. Consequence for us: a payload format that saves 30%
 per message while agents continue to emit twice as many messages has optimised the wrong variable.
@@ -165,6 +176,22 @@ evidence receptive field and dilutes insights over multi-hop paths. MOC construc
 multi-order evidence stream and applies a **Semantic-Topological Merging** algorithm to preserve
 semantic fidelity within token constraints. Six datasets, multiple backbone scales; improves task
 performance and reduces communication cost.
+
+**Read in full 2026-10-27.** Method: group upstream messages by hop distance (K = 2 optimal) into a
+multi-order evidence stream, then Semantic-Topological Merging (embedding-based redundancy detection plus
+small-model distillation under a length budget). Backbones: Gemma-2-27B, Qwen2.5-32B, DeepSeek-V3.2-685B;
+random DAGs at edge density 0.3 to 1.0. Relative gains: +2.30% average on Gemma at rho = 0.3, +6.77% on
+AQuA, +0.72% to +3.68% on Qwen HumanEval.
+
+**The decisive number:** on MMLU (DeepSeek setting) MOC moves input tokens from 1,958,918 to 2,405,945
+and output tokens from 490,362 to 486,600 - total tokens **up 18.1%** for +0.35 percentage points of
+accuracy (0.9228 to 0.9263). Its consolidation operator does reduce the multi-order stream itself
+(13.69e5 to 12.49e5, -8.8%), but the net effect against the baseline is more communication, not less.
+
+**Author-admitted limitation, verbatim:** higher-order evidence "may also introduce incorrect reasoning
+or even potentially malicious messages from compromised agents", with future work on "trust-aware
+schemes that dynamically select both the hop range and upstream messages based on topology structure,
+evidence consistency, and message reliability".
 
 **Assessment.** MOC is the closest work to our E2 (evidence), and it attacks the right problem: what
 gets *dropped* when a message is compressed. It differs in scope - it is a message-consolidation
@@ -286,10 +313,44 @@ neighbour in MCP's *elicitation*: the server asks the *human* for missing inform
 *sending agent* to expand a reference it already declared. The difference is worth stating precisely,
 because a reviewer will notice the resemblance.
 
+### 9b. The same matrix against the post-sweep literature (added 2026-10-27)
+
+The systematic sweep (`06-literature-review.md`) found active work on three of the four properties, so
+the matrix above is only half the picture. Columns: **Prov** = execution-provenance survey
+(arXiv:2606.04990); **UQ** = agent uncertainty taxonomy and evaluation protocol (arXiv:2609.07395);
+**AuthZ** = compositional authorisation framework (arXiv:2606.03518); **Tax** = protocol taxonomy
+(arXiv:2606.19135); **PB** = ProtocolBench (arXiv:2510.17149); **SILP** as before.
+
+| Property | SILP | Prov | UQ | AuthZ | Tax | PB |
+|---|---|---|---|---|---|---|
+| Types the claim inside a message | - | - | - | - | - | - |
+| Types the agent run / trace | - | + | ~ | - | - | - |
+| Provenance with observation time, per claim | - | ~ (trace-level) | - | - | - | - |
+| Calibration metric for stated confidence | - | ~ | + (TC-ECE) | - | - | - |
+| Epistemic type as a mandatory message field | - | - | ~ (measured, not declared) | - | - | - |
+| Authority as payload semantics | - | - | - | ~ (policy layer) | - | - |
+| Progressive precision / expansion on request | - | - | - | - | - | - |
+| Payload dimension in a protocol taxonomy | ~ (as a draft) | - | - | - | ~ (shape only) | - |
+| Measured protocol cost and latency | - | - | - | - | - | + |
+
+Two things this table establishes, and one it admits:
+
+1. **No existing taxonomy classifies a payload by the quality of the claim it carries.** The protocol
+   taxonomy (2606.19135) classifies payloads by *shape* - single, hybrid, schema-negotiated - with five
+   dimensions that contain no epistemic, provenance or authority dimension. That is independent
+   confirmation from other researchers that the space is classified structurally, not semantically.
+2. **Provenance exists as a research area, but for a different object.** The provenance survey types
+   the *run*; nothing found types the *claim on the wire*.
+3. **We are not first to E1, E2 or E3 in the abstract.** We may be first to put them in the payload as
+   mandatory, negotiable fields. That is a narrower claim and it must be written as one.
+
 ---
 
 ## 10. Conclusions from Phase 0
 
+0. **Phase 0 closed 2026-10-27 after the systematic sweep.** Six works read in full or near-full, 15
+   retained, 8 query strings recorded. The sweep did not kill the programme; it removed three
+   rhetorical claims from it.
 1. **Do not build a new language. Build a benchmarked extension.** SILP already occupies layers 1 and
    2 with an implementable, testable design. Duplicating it guarantees irrelevance.
 2. **Adopt SILP as the incumbent baseline in every experiment.** Comparing only against prose is
@@ -304,3 +365,9 @@ because a reviewer will notice the resemblance.
 6. **Watch the expiry.** `draft-hwang-silp-protocol-02` expires 2027-01-22. Re-check before Phase 1
    design freeze; a successor draft could close one of the four gaps, and that would be a finding,
    not an inconvenience.
+7. **Stop claiming novelty for E1, E2 and E3 in the abstract.** Uncertainty quantification and
+   execution provenance are published research areas; authorisation has a formal literature. The claim
+   is now: *claim-quality fields inside the payload*, with E4 as the genuinely unoccupied mechanism.
+8. **Cite the external evidence for H4.** MOC (ICML 2026) reports an 18.1% increase in total tokens
+   while presenting itself as an efficiency method. That is a published precedent for the trap our
+   benchmark exists to catch.

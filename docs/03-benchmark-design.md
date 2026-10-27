@@ -10,6 +10,12 @@ the equivalence margin and the cost formula are fixed **before** results are see
 **Q:** Does an epistemically typed, provenance-carrying, progressively resolvable payload reduce total
 cost at equal task success, relative to natural language, JSON, compact text and SILP?
 
+**Position against existing benchmarks.** ProtocolBench (arXiv:2510.17149) already measures task
+success, latency, message/byte overhead and failure robustness *across protocols*. This benchmark holds
+the protocol fixed (A2A/MCP envelope, one transport) and varies the **payload representation**, which is
+the axis ProtocolBench does not have. Where the axes overlap, this design reuses ProtocolBench's
+definitions so the two can be read together.
+
 **Decision rule (H1).** The IR arm wins if, over the task set:
 
 - total cost is lower than SILP by at least **15%** (relative), with the 95% bootstrap CI of the
@@ -86,6 +92,9 @@ what H2 measures.
    by a rubric applied to the receiver's reconstructed claim set.
 5. `tokens_by_tokenizer`: at least three tokenizers (the model families used), reported separately.
    Never averaged into a single "token count".
+5b. `calibration`: TC-ECE (Trajectory-Checkpoint Expected Calibration Error) from arXiv:2609.07395,
+   applied to the epistemic types in arm A4 and to whatever confidence the baselines emit. Adopting a
+   published instrument rather than inventing one keeps the result comparable with the UQ literature.
 6. `latency_end_to_end`, with decode calls visible.
 7. `parse_failures` and `retry_cost`.
 8. `expansion_requests`: count and cost in A4; zero by construction in others (see threats).
@@ -116,7 +125,7 @@ not reported as findings.
 |---|---|---|
 | Prompt length differences | Prompt tokens leak into the cost comparison | Length-match across arms within 10%; report prompt tokens separately |
 | Model familiarity with formats | JSON is far better represented in training data than a novel IR | Report per model family; treat the IR's disadvantage as intrinsic to novelty, not noise |
-| Fixed schedule hides the benefit of E4 | Progressive precision saves turns, but turns are fixed | Measure `expansion_requests` and simulate a variable-turn variant in a small pilot; state the limitation in the headline result |
+| Fixed schedule hides the benefit of E4 | Progressive precision saves turns, but turns are fixed | Measure `expansion_requests` and simulate a variable-turn variant in a small pilot; state the limitation in the headline result. Note that fixing the schedule also caps the achievable saving, because DALA's results show volume dominates and volume is held constant here by construction |
 | Decode cost mis-estimation | The economic conclusion flips | Count actual decode calls and their tokens; never infer from character counts |
 | Adjudicator bias | Success rate drifts toward the interesting arm | Blind adjudication; two adjudicators on 20% sample, report agreement |
 | Task templates too easy | Ceiling effect flattens all arms | Planted qualifiers and stale data are mandatory in every instance; pilot for spread before the main run |

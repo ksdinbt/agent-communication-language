@@ -24,9 +24,14 @@ substantial part of the concept is already implemented: SILP specifies a referen
 compiled into multiple surface encodings with runtime negotiation. What remains unaddressed across
 all reviewed work is the **epistemic and authorisational quality** of the payload: whether a claim is
 an observation, an inference or a guess; where it came from; who was entitled to assert it; and
-whether detail can be requested rather than pre-transmitted. The contribution we propose to test is
-therefore narrow and falsifiable, and its success criterion is a measured improvement against SILP,
-not against natural language alone.
+whether detail can be requested rather than pre-transmitted. A full-text reading of the cited papers and a documented search of the surrounding literature
+(8 query strings, 80 hits, 15 retained, 6 read) further narrowed the claim: uncertainty quantification
+and execution provenance are active research areas, and authorisation has a formal literature at the
+policy layer. What remains unoccupied is narrower and more precise - claim-quality fields carried
+*inside the payload* - and only progressive precision survived the sweep untouched.
+
+The contribution we propose to test is therefore narrow and falsifiable, and its success criterion is a
+measured improvement against SILP, not against natural language alone.
 
 ---
 
@@ -80,7 +85,14 @@ Two conclusions follow directly.
 2026. SILP occupies that ground, including the round-trip guarantee and the tokenizer-aware
 vocabulary. A project whose pitch is that sentence has no thesis.
 
-**Second:** the ground SILP leaves empty is specific and checkable. Reading its JSON Schema: the
+**Second, from the systematic sweep:** three of the four properties are less empty than they look.
+Uncertainty quantification for agents has a taxonomy, an evaluation protocol and a metric
+(arXiv:2609.07395); execution provenance has a six-dimensional taxonomy with nine relations
+(arXiv:2606.04990v6); authorisation has a compositional formal framework (arXiv:2606.03518). No work was
+found, however, that carries any of these *as fields of the inter-agent payload*, and none at all for
+progressive precision. Full method and query log: `06-literature-review.md`.
+
+**Third:** the ground SILP leaves empty is specific and checkable. Reading its JSON Schema: the
 `meta` object carries `req_id`, `session_id`, `priority`, `confidence` (number, 0 to 1, default 1.0),
 `seq`, `out`, `next_agent`. There is no epistemic type, no evidence reference, no source, no
 timestamp of observation, no distinction between proposing and authorising an action, and no
@@ -101,11 +113,22 @@ resolve it). Claim types are structural, not decorative: a receiver may act on `
 not treat `ASSUMED` as established.
 
 Calibration is handled honestly. A model's declared confidence is **not** a statistically calibrated
-probability, and the representation must not pretend otherwise. Numeric confidence is permitted only
+probability, and the representation must not pretend otherwise. This is no longer our assertion: it is a
+published finding, and the same work supplies the instrument we intend to use (TC-ECE, arXiv:2609.07395),
+which also shows that step-level calibration does not imply trajectory-level calibration. What E1 adds is
+that epistemic type becomes a mandatory field of the message rather than a measurement taken afterwards
+over a transcript. Numeric confidence is permitted only
 alongside a stated basis (for example "empirical frequency over N observations", "model self-report",
 "expert prior"), and downstream agents are required to treat unbased numbers as ordinal at best.
 
 ### E2. Provenance and evidence
+
+**Scope, restated after the literature sweep.** Execution provenance - a typed graph of an agent run,
+with a nine-relation taxonomy - is already a research area (arXiv:2606.04990v6). E2 is deliberately a
+different object: it types the evidence behind a *claim carried in a message*, so that the receiving
+agent can weigh the claim before acting, not so that an auditor can reconstruct the run afterwards. The
+two are complementary, and the survey's own gap list ("no benchmark evaluating the complete provenance
+chain"; "semantic provenance") suggests the message-level slice is open.
 
 A claim may reference evidence objects: `{source_id, retrieved_at, method, reliability, hash}`. The
 representation distinguishes the *time of observation* from the *time of sending*, because the
@@ -114,6 +137,12 @@ objects may be sent inline (small) or by reference into a shared, versioned stor
 also the hook for progressive precision.
 
 ### E3. Authority semantics
+
+**Scope, restated.** Authentication and cryptographic integrity are solved elsewhere (signed envelopes,
+verifiable credentials, mTLS) and are explicitly out of scope; so are formal authorisation frameworks,
+which operate at the policy layer (arXiv:2606.03518). E3 claims only that the *authority status of the
+proposition travels in the payload* and survives forwarding, so that a peer can tell a proposal from an
+authorisation without consulting an external policy engine.
 
 One axis separates *what is being done with a proposition*, and it is orthogonal to the
 communicative act: `INFORM`, `PROPOSE`, `REQUEST`, `AUTHORISE`, `EXECUTE_REPORT`. The receiving agent
@@ -248,6 +277,12 @@ decoding consumes inference.
 *This hypothesis predicts the failure of a common assumption, including ours.* It is retained
 deliberately: a benchmark that cannot detect this is worthless.
 
+There is now published precedent. MOC (ICML 2026), an efficiency method, reports MMLU input tokens
+rising from 1,958,918 to 2,405,945 and total tokens rising 18.1% against its own multi-agent baseline,
+for +0.35 percentage points of accuracy. The consolidation step saves 8.8% of the multi-order stream and
+still ends up communicating more than the baseline. A paper reporting "reduced redundancy" without the
+net figure would have called that a saving.
+
 ---
 
 ## 7. Roadmap
@@ -346,7 +381,9 @@ Single-run comparisons are not evidence.
 
 ## 10. Where the value would be
 
-Not in "a new language". Interlingua-style designs are old: the idea descends from machine
+Not in "a new language", and not in "nobody has thought of this". Two of the four properties have
+published research literatures behind them; what they lack is a wire format. Interlingua-style designs
+are old: the idea descends from machine
 translation interlinguas and from graph-semantic representations such as AMR, and SILP already ports
 it to the LLM-agent setting. The defensible value is a demonstration that a shared representation can
 hold four properties at once:
@@ -395,6 +432,9 @@ having sent it.
 Continue in a research-and-engineering mode. Do not assume a new language is required, and do not
 assume the concept is novel.
 
+0. Re-run the systematic sweep (`06-literature-review.md`) with access to ACM DL, Scopus and IEEE
+   Xplore, and with citation chasing from the three surveys. The 2026-10-27 sweep used one search
+   backend and is single-reviewer; that is a known limitation, not a finished review.
 1. Re-verify the status of SILP, NLIP, FIPA-ACL, DALA, MOC, A2A and MCP before any architectural
    decision. Three of these changed status in the last year; SILP is an individual draft that expires
    on 2027-01-22 and may be revised or abandoned.

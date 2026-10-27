@@ -41,13 +41,13 @@ Communication: An Auction-based Method for Language Agent Interaction.* Proceedi
 Conference on Artificial Intelligence 40(35):29412-29420, AAAI-26, published 2026-03-14.
 DOI <https://doi.org/10.1609/aaai.v40i35.40182>
 <https://ojs.aaai.org/index.php/AAAI/article/view/40182>
-*Read: abstract and bibliographic record. Full paper not read.*
+*Read: full text (method, cost tables, limitations) on 2026-10-27. See `06-literature-review.md`.*
 
 **[MOC]** Guan, Y., Wang, L., Lu, Z., Wang, Z., Yan, W., Duan, Q. *MOC: Multi-Order Communication in
 LLM-based Multi-Agent Systems.* Proceedings of the 43rd International Conference on Machine
 Learning, PMLR 306:37603-37619, 2026.
 <https://proceedings.mlr.press/v306/guan26i.html>
-*Read: abstract and bibliographic record. Full paper not read.*
+*Read: full text (setup, result tables, token counts, limitations) on 2026-10-27. See `06-literature-review.md`.*
 
 **[A2A]** Agent2Agent Protocol. Specification v1.0.0 (latest released).
 <https://a2a-protocol.org/latest/specification/> · repository:
@@ -65,19 +65,66 @@ relationship appendix.*
 *Enabling Agents to Communicate Entirely in Latent Space.* Proceedings of ACL 2026 (Volume 1: Long
 Papers), pp. 27106-27129. DOI <https://doi.org/10.18653/v1/2026.acl-long.1248>
 <https://aclanthology.org/2026.acl-long.1248/>
-*Read: abstract and bibliographic record. Full paper not read.*
+*Read: full text (method, compression analysis, limitations) on 2026-10-27. See `06-literature-review.md`.*
 
 **[Survey]** Yan, B., Zhou, Z., Zhang, L., Zhang, L., Zhou, Z., Miao, D., Li, Z., Li, C., Zhang, X.
 *Beyond Self-Talk: A Communication-Centric Survey of LLM-Based Multi-Agent Systems.* arXiv:2502.14321
 (v3, 2026-05-26); accepted by Frontiers of Computer Science.
 DOI <https://doi.org/10.1007/s11704-026-50857-y> · <https://arxiv.org/abs/2502.14321>
-*Read: abstract. **Read the full text before writing the related-work section.***
+*Read: abstract. Full text being extracted for the taxonomy and challenge lists; see `06-literature-review.md`.*
 
 **[ACDL]** Peleg Pelc, N., Kaminka, G. A., Goldberg, Y. *A Language for Describing Agentic LLM
 Contexts.* CAIS '26 (ACM Conference on AI and Agentic Systems), May 2026.
 DOI <https://doi.org/10.1145/3786335.3813126> · <https://arxiv.org/abs/2605.01920> ·
 <http://www.acdlang.org>
 *Read: abstract and bibliographic record.*
+
+## Works added by the systematic sweep (2026-10-27)
+
+All entries below are published on arXiv or in the venue stated. Abstract-level only unless marked.
+
+- **Provenance survey.** Wang, Y., Zhang, J., Wu, Z., Cai, T., Liu, Z., Sun, Z., Zheng, M., Dong, M.,
+  Qiu, Y.-X., Yin, X., Zhu, Y. *From Agent Traces to Trust: A Survey of Evidence Tracing and Execution
+  Provenance in LLM Agents.* arXiv:2606.04990v6, rev. 2026-10-15. **[abstract]** Closest existing work
+  to E2; defines execution provenance as a typed graph of an agent run. *Read in full before any claim
+  about E2's novelty is published.*
+- **Uncertainty quantification.** Lin, M., Lan, Q., Guan, S., Jing, W., Fan, J., Gregg, D., Botterweck,
+  G. *Uncertainty Quantification for LLM Agents: A Taxonomy, an Evaluation Protocol, and an Empirical
+  Study.* arXiv:2609.07395, 2026-09-07. **[abstract]** Source of the TC-ECE calibration metric and of
+  the finding that agent self-reported confidence does not reliably beat a baseline.
+- **Uncertainty propagation.** Xia, B., Zhu, L., Gao, E. *Uncertainty Propagation in LLM-Based
+  Systems.* arXiv:2604.23505, 2026-04-26. **[abstract]**
+- **Authorisation framework.** Ibrahim, A., Li, Y. *Overlaying Governance: A Compositional
+  Authorization Framework for Delegation and Scope in Agentic AI.* arXiv:2606.03518, 2026-06-02.
+  **[abstract]**
+- **Security position paper.** Qu, W., Xu, M., Wang, P. *Securing LLM Agents Need Intent-to-Execution
+  Integrity.* arXiv:2605.16976, 2026-05-16. **[abstract]**
+- **Zero-trust A2A security.** Budzyn, K., Brodzik, A., Szczepkowski, M. *Cryptographically Secure
+  Agent-to-Agent Communication in Multi-Agent Systems.* arXiv:2610.23078, 2026-10-16. **[abstract]**
+- **Protocol benchmark.** Du, H., Su, J., Li, J., Ding, L., Yang, Y., Han, P., Tang, X., Zhu, K., You,
+  J. *ProtocolBench: Which LLM MultiAgent Protocol to Choose?* arXiv:2510.17149v3, rev. 2026-06-02.
+  **[abstract]**
+- **Protocol taxonomy.** Sander, L., Gidey, H. K., Lenz, A. *A Technical Taxonomy of LLM Agent
+  Communication Protocols.* arXiv:2606.19135, 2026-06-17. **[abstract]**
+- **Token economics survey.** Chen, Y., Chen, J., He, C. *Token Economics for LLM Agents: A Dual-View
+  Study from Computing and Economics.* arXiv:2605.09104, 2026-05-09. **[abstract]**
+- **Hybrid latent-text protocol.** Mou, X., Wang, S., Li, Z. *HyLaT: Efficient Multi-Agent
+  Communication via Hybrid Latent-Text Protocol.* arXiv:2605.25421v2, rev. 2026-10-23. **[abstract]**
+- **Latent communication survey.** Liu, Y. *Beyond tokens: a unified framework for latent communication
+  in LLM-based multi-agent systems.* arXiv:2606.05711v3, rev. 2026-07-15. **[abstract]** Three-axis
+  framework over eighteen methods, 2024-2026.
+- **Decentralised routing.** Tambwekar, P., Feng, Y., Patel, D. *Proxifield: Decentralized Multi-Agent
+  Communication through Semantic Proximity.* arXiv:2609.20889, 2026-09-16. **[abstract]**
+- **Semantic-communication lineage (different field).** Xiao, Z., Ye, C., Feng, Y., Hu, Y., Jiao, T.,
+  Cai, L., Liu, G. *Transmission With Machine Language Tokens: A Paradigm for Task-Oriented Agent
+  Communication.* arXiv:2507.21454, 2025-07-29. **[abstract]** Learned machine-token codec for
+  task-oriented semantic communication over a channel. Not an agent-protocol competitor; cite as the
+  boundary case.
+- **MCP vs A2A.** Predoaia, I., Vu, T. M., Barmpis, K. *A Comparative Study of MCP and A2A for
+  Inter-Agent Coordination in LLM-Based Systems.* arXiv:2607.23884, 2026-07-26. **[abstract]**
+- **NLIP design rationale.** Xing, L., Topaloglu, R. O., Sinha, R. *The Natural Language Interaction
+  Protocol and Standard for AI Agents.* arXiv:2609.04135, 2026-09-03. **[abstract]** Design rationale,
+  message model, bindings and reference implementation for ECMA-430.
 
 ## Standards referenced by the above
 
@@ -92,6 +139,7 @@ DOI <https://doi.org/10.1145/3786335.3813126> · <https://arxiv.org/abs/2605.019
 | Date | Action |
 |---|---|
 | 2026-10-27 | Initial Phase 0 sweep: SILP datatracker page and full draft; NLIP spec index; FIPA SC00061G via web archive (live endpoint 502); DALA and MOC abstract pages; A2A v1.0.0 spec; MCP 2026-07-28 spec; Interlat, Survey, ACDL abstract pages |
+| 2026-10-27 | Systematic sweep, 8 recorded query strings, 80 hits, 15 retained, 6 read in full (DALA, MOC, Interlat plus three partials). Promoted DALA, MOC, Interlat to `[read]`. Added 15 works. Method and screening: `06-literature-review.md` |
 
 ## Known gaps in this list
 
@@ -100,7 +148,8 @@ DOI <https://doi.org/10.1145/3786335.3813126> · <https://arxiv.org/abs/2605.019
 2. ECMA-430 to 433 full texts not read; the NLIP summary is based on document scopes.
 3. Full texts of DALA, MOC, Interlat and the communication survey not read; each is cited at abstract
    level only, and no quantitative claim is made from them beyond what the abstract states.
-4. No systematic literature search yet. Phase 1 must run one (at minimum: ACM DL, ACL Anthology,
-   arXiv cs.MA and cs.CL, IEEE, plus citation chasing from the communication survey) and record the
-   query strings and date, or the claim "this gap is unaddressed" is an assertion rather than a
-   finding.
+4. The systematic sweep was run on 2026-10-27 (`06-literature-review.md`): eight recorded query
+   strings, one general search backend. It did **not** cover ACM DL, Scopus, IEEE Xplore or Web of
+   Science (no access), and screening was single-reviewer. The gap claim is therefore bounded by those
+   exclusions and should be re-run with citation chasing from the top three surveys before any external
+   publication.

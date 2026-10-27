@@ -22,6 +22,7 @@ natural language or JSON.
 | [`docs/03-benchmark-design.md`](docs/03-benchmark-design.md) | Experiment protocol: arms, tasks, metrics, statistics, threats to validity |
 | [`docs/04-glossary.md`](docs/04-glossary.md) | One term, one meaning (PL/EN) |
 | [`docs/05-decisions.md`](docs/05-decisions.md) | Dated decisions, with what would overturn each |
+| [`docs/06-literature-review.md`](docs/06-literature-review.md) | Systematic sweep: method, query log, full-text findings, and what each gap claim survived |
 | [`docs/REFERENCES.md`](docs/REFERENCES.md) | Every source with version, status and verification date |
 
 ## What is actually new
