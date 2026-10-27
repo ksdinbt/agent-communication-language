@@ -105,6 +105,9 @@ what H2 measures.
    5 of 12 exchanges and returned an empty message. A harness that scores an empty completion as
    "receiver ignored the payload" manufactures a result. Empty completions are a separate outcome and
    never a silent zero.
+9b. `qualifier_compliance`: a correct `!EXPAND` counts as compliant, because the receiver is asking
+   for the data behind the caveat rather than ignoring it. Added after the overhead probe
+   (`12-overhead.md`), where a stricter rule scored correct behaviour as a failure.
 10. `declared_status` versus `rubric_qualifier`. The pilot found a case where the receiver's own
     `qualifier=no` trailer contradicted its prose, which correctly reported staleness. Scoring uses the
     rubric; the self-report is recorded as a separate, weaker signal.

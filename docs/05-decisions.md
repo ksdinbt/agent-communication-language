@@ -149,3 +149,18 @@ drift-based claim.
 *Would be overturned by:* a run where the arms do not converge at any length, in which case the
 economic argument is dead and only the behavioural one (qualifier retention) survives.
 
+**D-023 · 2026-10-27 · For simple payloads, a worked example beats a specification, and the skill is not loaded per call**
+Four variants, 32 calls: no skill plus an example-shaped contract carried 452 prompt tokens against
+1,381 for the long skill and prose schema, cost 39% less per call, and scored identically on validity,
+qualifier retention and `!EXPAND` correctness. Trimming the skill while keeping the prose contract was
+worse than doing nothing (reasoning up 72%, cost up 16%), because a terser specification leaves more to
+infer. `typed-payload-v0` stays as reference documentation for humans and complex payloads; the harness
+defaults to the example contract with no skill injection.
+*Would be overturned by:* a payload with several claims, a deferral chain or `!CANNOT_EXPAND` where the
+example runs out and the skill earns its place.
+
+**D-024 · 2026-10-27 · A correct `!EXPAND` counts as qualifier-compliant**
+The overhead probe initially scored a receiver as having lost the caveat when it correctly asked for the
+daily split instead of restating it. Restating a caveat while requesting the data behind it is polite,
+not correct; the rubric now accepts the expansion request as compliance.
+

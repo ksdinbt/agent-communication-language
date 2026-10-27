@@ -1,0 +1,10 @@
+{
+  "rows": 32,
+  "total_billed": 0.007522,
+  "variants": [
+    "v0_long_skill_prose_contract",
+    "v1_short_skill_prose_contract",
+    "v2_short_skill_example_contract",
+    "v3_no_skill_example_contract"
+  ]
+}
