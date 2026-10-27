@@ -1,0 +1,7 @@
+Copyright (c) 2026 Inbet Online Ltd. All rights reserved.
+
+This repository contains internal research documentation. It is not open source and is not licensed
+for redistribution, publication or external use without written permission from Inbet Online Ltd.
+
+Phase 5 of the roadmap (docs/00-paper.md) anticipates publishing the specification, the reference
+implementation and the benchmark under an open licence. That decision has not been taken.
