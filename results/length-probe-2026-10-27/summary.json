@@ -1,0 +1,31 @@
+{
+  "nl_T8": {
+    "mean_billed": 0.005874,
+    "mean_per_turn": 0.000734,
+    "qualifier_partial": "1/2",
+    "qualifier_stale": "2/2",
+    "weakest_correct": "2/2"
+  },
+  "payload_T1": {
+    "mean_billed": 0.001489,
+    "mean_per_turn": 0.001489,
+    "qualifier_partial": "2/2",
+    "qualifier_stale": "2/2",
+    "weakest_correct": "2/2"
+  },
+  "payload_T8": {
+    "mean_billed": 0.008558,
+    "mean_per_turn": 0.00107,
+    "qualifier_partial": "2/2",
+    "qualifier_stale": "2/2",
+    "weakest_correct": "2/2"
+  },
+  "nl_T1": {
+    "mean_billed": 0.000292,
+    "mean_per_turn": 0.000292,
+    "qualifier_partial": "1/2",
+    "qualifier_stale": "1/2",
+    "weakest_correct": "2/2"
+  },
+  "total_billed_usd": 0.032426
+}

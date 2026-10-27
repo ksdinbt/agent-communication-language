@@ -134,3 +134,18 @@ qualifier requires a stated reason (spec 5.5). Epistemic type is verified by rub
 adjudication, never by the sender's own label.
 *Would be overturned by:* evidence that a validated schema plus a schema-level truth check (for example
 cross-checking `value` against the source table inside the harness) closes the fabrication route.
+
+**D-021 · 2026-10-27 · Format effects are reported as level and drift, never as one average**
+The length probe found the typed arm dearer per turn but far flatter: prose per-turn cost rose 410%
+from first turn to last, the payload arm 80%. An arm that is dearer but flat and one that is cheap and
+steep are different propositions, and a single mean hides which is which. Both are reported.
+
+**D-022 · 2026-10-27 · The crossover between arms is measured, not assumed**
+At eight turns the payload arm had not yet become cheaper in absolute terms ($0.001070 against
+$0.000734 per turn), although its penalty had amortised from 5.1x at one turn to 1.46x. The MVP will
+not claim a payload is economical; it reports whether a crossover occurs within the tested horizon and
+states the horizon. Eight turns is not enough, so the H1 test needs sessions of 15-25 turns or a
+drift-based claim.
+*Would be overturned by:* a run where the arms do not converge at any length, in which case the
+economic argument is dead and only the behavioural one (qualifier retention) survives.
+
