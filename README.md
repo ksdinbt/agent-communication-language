@@ -26,6 +26,7 @@ natural language or JSON.
 | [`docs/07-silp-runnability.md`](docs/07-silp-runnability.md) | Gate result: does the incumbent actually run, and what does its "lossless" round-trip really preserve |
 | [`docs/08-pilot.md`](docs/08-pilot.md) | Two-agent pilot: 12 exchanges for one cent, and what it changed in the plan |
 | [`docs/09-skill-probe.md`](docs/09-skill-probe.md) | Does a loaded skill change receiver behaviour? Five models, two conditions, one clear failure mode |
+| [`docs/10-contract-probe.md`](docs/10-contract-probe.md) | Receiver contract: 48/48 valid responses, one fabricated figure, and reasoning at 74% of the bill |
 | [`spec/ir-extension-v0.1.md`](spec/ir-extension-v0.1.md) | E4 specification: deferred detail, `!EXPAND`, degradation to plain SILP |
 | [`skills/typed-payload-v0/SKILL.md`](skills/typed-payload-v0/SKILL.md) | The agent-facing skill: seven fields, three rules, one counter-example |
 | [`docs/REFERENCES.md`](docs/REFERENCES.md) | Every source with version, status and verification date |

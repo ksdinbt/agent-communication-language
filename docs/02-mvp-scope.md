@@ -48,7 +48,22 @@ It does not exist to produce a library, a standard proposal, or a multi-agent fr
 
 ## 4. Definitions that remove ambiguity
 
-**Total cost.** A single scalar per task, expressed in *token-equivalents*:
+**Total cost, reported three ways (revised 2026-10-27).** The earlier single scalar confused two
+questions. Both are reported now, and only one supports a claim about money:
+
+| Metric | Definition | Supports a savings claim |
+|---|---|---|
+| `cost_billed` | what the provider invoices: prompt + completion tokens, reasoning included | **yes** |
+| `cost_payload` | prompt + completion tokens minus reasoning tokens, same rate | no, alone |
+| `reasoning_tokens` | reported per call, separately | n/a |
+
+Reasoning is neither suppressed nor hidden: models may think as long as they need, `max_tokens` is
+sized per condition, and `finish_reason=length` means a truncated run that is re-executed, never scored
+as a behavioural failure (D-018/D-019). `cost_payload` answers a narrow, legitimate question — how much
+of the bill belongs to the payload rather than to the model's deliberation — but a format that halves
+`cost_payload` while doubling deliberation has saved nothing.
+
+The per-task scalar, where one is still needed, is:
 
 ```
 total_cost = tokens_in + tokens_out + w * decode_calls_tokens_equivalent + retry_cost

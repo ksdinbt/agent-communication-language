@@ -81,8 +81,10 @@ what H2 measures.
 
 **Primary**
 
-1. `total_cost` per task: `tokens_in + tokens_out + w * decode_tokens + retry_cost`. `w` fixed at 1.0,
-   sensitivity at 0.5 and 2.0.
+1. `cost_billed` per task: everything the provider charges, reasoning included. `cost_payload` and
+   `reasoning_tokens` are reported alongside it and never substituted for it (definitions in
+   `02-mvp-scope.md`). The decode-weight `w` from the original design survives only inside
+   `cost_payload` sensitivity checks, because `cost_billed` already contains the real decode cost.
 2. `task_success`: binary, rule-based checker plus adjudication.
 3. `qualification_loss`: count of sender qualifiers missing or unmarked at the receiver.
 

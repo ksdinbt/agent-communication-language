@@ -1,0 +1,44 @@
+{
+  "silp": "v1",
+  "version": "ir-v0.1",
+  "intent": "!ASSERT",
+  "entities": [
+    {
+      "id": "act",
+      "value": "turnover_2026-W41",
+      "action": "!ASSERT"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "segment",
+      "value": "sports"
+    }
+  ],
+  "alternatives": [],
+  "meta": {
+    "req_id": "8f2c1a0e"
+  },
+  "ext": {
+    "ext_version": "e4-v0.1",
+    "authority": "PROPOSE",
+    "claims": [
+      {
+        "id": "c1",
+        "epistemic": "OBSERVED",
+        "value": null,
+        "unit": "EUR",
+        "observed_at": "2026-10-21T00:00:00Z",
+        "source": "extract:2026-10-21"
+      }
+    ],
+    "qualifier": {
+      "type": "partial_period",
+      "note": "week extracted at day 3 of 7"
+    },
+    "precision": {
+      "resolution": "inline",
+      "refs": []
+    }
+  }
+}

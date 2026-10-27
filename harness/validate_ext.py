@@ -86,6 +86,16 @@ def validate(doc: dict[str, Any]) -> list[str]:
     if qual:
         if qual.get("type") not in QUALIFIER:
             _err(errors, "ext.qualifier.type", f"{qual.get('type')!r} is not a valid qualifier type")
+        elif qual["type"] == "none" and not str(qual.get("note", "")).strip():
+            _err(errors, "ext.qualifier", "qualifier type 'none' requires a note saying why it was dropped")
+
+    # Rule 4.6 (added after docs/10-contract-probe.md): a numeric report must carry its number
+    # in the machine-readable field, not only in prose. A null value with a figure in the text
+    # lets a wrong number hide where no validator looks.
+    if doc.get("intent") == "!REPORT":
+        for i, claim in enumerate(claims):
+            if claim.get("value") in (None, ""):
+                _err(errors, f"ext.claims[{i}]", "numeric !REPORT requires a non-null 'value'")
 
     precision = ext.get("precision") or {}
     resolution = precision.get("resolution", "inline")

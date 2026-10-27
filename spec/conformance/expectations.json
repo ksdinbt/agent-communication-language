@@ -6,5 +6,7 @@
   "observed-no-time.json": false,
   "expand-request.json": true,
   "cannot-expand.json": true,
-  "degraded-plain.json": true
+  "degraded-plain.json": true,
+  "report-value-null.json": false,
+  "qualifier-dropped.json": false
 }

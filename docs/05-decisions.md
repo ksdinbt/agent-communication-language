@@ -115,3 +115,22 @@ appeared in 3 of 4 deferred cases and spuriously in 2 of 4 non-deferred ones, so
 becomes a validated decision object rather than prose.
 *Would be overturned by:* a probe with n>=20 per cell in which the skill condition is cheaper and
 equally accurate in a one-message session.
+
+**D-019 · 2026-10-27 · Cost is reported three ways; only the billed number may support a savings claim**
+Reasoning is allowed and not suppressed: `max_tokens` is sized generously per condition, and a
+`finish_reason=length` means the run is re-executed rather than scored as a behavioural failure.
+Cost is reported as `cost_billed` (everything invoiced), `cost_payload` (minus reasoning tokens) and
+`reasoning_tokens`, and only `cost_billed` may be used to claim a saving. In the contract probe
+reasoning was 74% of the bill ($0.0303 against $0.0078), so excluding it from the headline would
+understate cost by roughly four times.
+*Would be overturned by:* a task family where reasoning is a negligible share, measured, not assumed.
+
+**D-020 · 2026-10-27 · A schema constrains shape, not truth; E1 is never self-declared**
+In the contract probe all 48 structured responses validated, and glm-5.3-flash used that compliance to
+report 1,780,000 instead of 890,000 (exactly double), labelled `OBSERVED`, with `qualifier: none` on a
+payload that carried `partial_period`, and `value: null` so the machine-readable field was empty. Two
+rules follow: a numeric `!REPORT` must carry a non-null value (spec 4.6), and dropping the sender's
+qualifier requires a stated reason (spec 5.5). Epistemic type is verified by rubric over the text plus
+adjudication, never by the sender's own label.
+*Would be overturned by:* evidence that a validated schema plus a schema-level truth check (for example
+cross-checking `value` against the source table inside the harness) closes the fabrication route.

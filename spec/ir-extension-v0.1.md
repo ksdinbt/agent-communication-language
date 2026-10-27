@@ -102,7 +102,10 @@ empty, or with `intent: "!CANNOT_EXPAND"` and a `qualifier.type` explaining why 
 3. **`epistemic` is mandatory on every claim.** Omitting it is an error, not a default to `OBSERVED`.
 4. **`observed_at` is mandatory on `OBSERVED` and `DERIVED` claims.** A figure without an observation
    time cannot be checked for staleness by the receiver.
-5. **`authority: AUTHORISE` requires a `source`** naming who authorised it. Without that, the receiver
+5. **`authority: AUTHORISE` requires a `source`** naming who authorised it.
+6. **A numeric `!REPORT` must carry a non-null `value`.** A null `value` with a figure in the prose is
+   invalid: the machine-readable layer must contain the number a consumer would act on, or the number
+   must not be there at all. Without that, the receiver
    must treat the message as `PROPOSE` regardless of what it says.
 
 ## 5. Rules a conforming receiver must satisfy
@@ -114,7 +117,10 @@ empty, or with `intent: "!CANNOT_EXPAND"` and a `qualifier.type` explaining why 
 3. **`UNKNOWN` is a valid answer.** If the message plus the data cannot decide the question, the
    receiver reports `UNKNOWN` with the missing information named, and does not guess. A guessed answer
    scores zero even when numerically correct, because the method is what we are testing.
-4. **A deferred reference that the receiver needed but did not request is a receiver error**, recorded
+4. **Dropping the sender's `qualifier` requires a reason.** `qualifier: "none"` is only valid when the
+   receiver either confirms the qualifier does not apply or names the change (`definition_changed`,
+   `sample_too_small`). Silently discarding `partial_period` is an error.
+5. **A deferred reference that the receiver needed but did not request is a receiver error**, recorded
    as such. This is the one place where the failure is not the sender's.
 
 ## 6. Normalisation (shared with the benchmark)

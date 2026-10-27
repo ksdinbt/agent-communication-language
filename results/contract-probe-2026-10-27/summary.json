@@ -1,0 +1,14 @@
+{
+  "rows": 96,
+  "reps": 3,
+  "models": [
+    "xiaomi/mimo-v2.6-flash",
+    "z-ai/glm-5.3-flash",
+    "deepseek/deepseek-v4.1-flash-1017",
+    "openai/gpt-6-luna"
+  ],
+  "total_billed_usd": 0.030347,
+  "total_payload_usd": 0.007848,
+  "empty": 0,
+  "truncated": 0
+}
