@@ -23,6 +23,7 @@ natural language or JSON.
 | [`docs/04-glossary.md`](docs/04-glossary.md) | One term, one meaning (PL/EN) |
 | [`docs/05-decisions.md`](docs/05-decisions.md) | Dated decisions, with what would overturn each |
 | [`docs/06-literature-review.md`](docs/06-literature-review.md) | Systematic sweep: method, query log, full-text findings, and what each gap claim survived |
+| [`docs/07-silp-runnability.md`](docs/07-silp-runnability.md) | Gate result: does the incumbent actually run, and what does its "lossless" round-trip really preserve |
 | [`docs/REFERENCES.md`](docs/REFERENCES.md) | Every source with version, status and verification date |
 
 ## What is actually new

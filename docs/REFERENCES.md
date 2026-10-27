@@ -145,8 +145,10 @@ All entries below are published on arXiv or in the venue stated. Abstract-level 
 
 ## Known gaps in this list
 
-1. No inspection of `polyglotIR` source; claims about SILP's implementation quality are therefore
-   absent, not implied.
+1. `polyglotIR` was inspected and executed on 2026-10-27 (commit `45e9550`); results in
+   `07-silp-runnability.md`. The 675-run matrix, heartbeat runs and negotiation module were **not**
+   re-executed, so claims about SILP's experimental results rest on its published data, not on our
+   reproduction.
 2. ECMA-430 to 433 full texts not read; the NLIP summary is based on document scopes.
 3. Full texts of DALA, MOC, Interlat and the communication survey not read; each is cited at abstract
    level only, and no quantitative claim is made from them beyond what the abstract states.

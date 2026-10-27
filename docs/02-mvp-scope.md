@@ -29,6 +29,7 @@ It does not exist to produce a library, a standard proposal, or a multi-agent fr
 | **Five arms** | NL, JSON, compact text, IR (ours), SILP. All arms run the same tasks on the same data with the same number of turns. |
 | **IR extension** | E1 epistemic type, E2 evidence reference with observation time, E3 authority axis, E4 resolvable reference with `EXPAND`. Implemented as a documented extension over SILP's IR, with a declared degradation path. |
 | **Encoders and decoders** | For the IR arm: readable JSON form and compact text form, both lossless. A binary form only if it is free (CBOR of the JSON form counts). Validators for all. |
+| **Semantic projection** | The single comparison function used by every arm, defined once in code and documented here, because SILP's own codec does not preserve the full IR (see `07-silp-runnability.md`). Fields outside the projection may be carried but are not scored. |
 | **Harness** | Scripted runner: fixed prompts, fixed seeds, logged raw messages, token counts per tokenizer, wall-clock per step, decode-call counts, task outcome, adjudication record. |
 | **Metrics and statistics** | As defined in [`03-benchmark-design.md`](03-benchmark-design.md), including pre-registered equivalence margin. |
 | **Report** | Results incl. negative results, threats to validity, reproduction instructions. |

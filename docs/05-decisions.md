@@ -75,3 +75,19 @@ invalid. It is cited for the volume finding and for its cost table, not as an ar
 **D-013 · 2026-10-27 · Adopt TC-ECE for epistemic calibration instead of inventing a metric**
 arXiv:2609.07395 supplies a calibration instrument and the empirical reason for E1. Reimplementing it
 would duplicate published work and weaken comparability.
+
+**D-014 · 2026-10-27 · A5 (SILP) is a usable arm, under a declared semantic projection**
+The reference implementation installs and runs (`uv pip install -e .`, core deps only), compiles all
+27 bundled examples with its two lossless frontends, and passes 183 of 197 tests. It does **not**
+round-trip the full IR: 0/54 by identity, 52/54 under its own projection, because secondary entity
+ids, constraint `subject` and the entire `meta` object are not carried. Every arm is therefore scored
+on one shared, versioned projection defined in the harness.
+*Would be overturned by:* an upstream fix making the codec preserve the full IR, in which case the
+projection narrows to identity and the result becomes stronger.
+
+**D-015 · 2026-10-27 · Our extensions must not live in `meta`**
+SILP keeps its only epistemic field, `confidence`, in `meta`, and `meta` does not survive a decode:
+`priority` 1 becomes 0, `confidence` 0.9 becomes 1.0, `seq` is emptied and `req_id` is regenerated.
+E1-E4 therefore go into the semantic body or into an extension the codec demonstrably carries. A
+protocol that loses its own confidence field cannot be used to measure calibration.
+*Would be overturned by:* a codec that preserves `meta` byte for byte.

@@ -37,7 +37,7 @@ unblinding, with the reason stated.
 | A2 | JSON | Ad-hoc JSON, schema invented per task by the sender | n/a (self-describing) | The current practical default for structured exchange |
 | A3 | Compact text | Abbreviated key/value lines, no shared IR | n/a | Tests "shorter syntax" without semantics |
 | A4 | IR (ours) | Typed IR with E1-E4 | Yes (readable + compact forms) | Feature-negotiated; degrades to SILP |
-| A5 | SILP | SILP IR, `code` and `json` frontends | Yes (per specification) | Incumbent baseline, `polyglotIR` |
+| A5 | SILP | SILP IR, `code` and `json` frontends | Projection-limited (see `07-silp-runnability.md`) | Incumbent baseline, `polyglotIR` commit `45e9550`, installs and runs |
 
 Rules that apply to every arm:
 
@@ -111,6 +111,11 @@ what H2 measures.
 5. Adjudicate disagreements blind: the adjudicator sees the task, the ground truth and the receiver's
    final artefact, not the arm label.
 6. Freeze the analysis script before unblinding the arm labels.
+
+**Scoring unit.** All arms are scored on the same declared semantic projection, not on raw IR
+identity. SILP's own codec drops secondary entity ids, constraint `subject` and the whole `meta`
+object on decode (measured: 0/54 full-IR round-trips, 52/54 on its own projection), so scoring on
+identity would penalise any arm that carries more. The projection is versioned with the harness.
 
 **Statistics.** Paired comparison per task instance (same instance across arms). Report mean
 difference with 10,000-resample bootstrap CI and, for success rates, a paired test appropriate to
