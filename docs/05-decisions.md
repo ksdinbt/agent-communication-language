@@ -91,3 +91,17 @@ SILP keeps its only epistemic field, `confidence`, in `meta`, and `meta` does no
 E1-E4 therefore go into the semantic body or into an extension the codec demonstrably carries. A
 protocol that loses its own confidence field cannot be used to measure calibration.
 *Would be overturned by:* a codec that preserves `meta` byte for byte.
+
+**D-016 · 2026-10-27 · Payload minimalism is an economic requirement, and the skill file is how it is paid for**
+A twelve-exchange pilot (docs/08-pilot.md) showed the naive typed arm costing 2.4x the tokens and 2.7x
+the wall clock of natural language, and the cause was instruction density, not syntax: 1,951 mean
+reasoning tokens against 595. Conventions therefore move out of the per-call prompt and into a short,
+versioned skill document loaded once. A field that cannot be explained in one sentence is a field that
+will be misread.
+*Would be overturned by:* a payload whose conventions fit in two lines of prompt with no measurable
+reasoning overhead.
+
+**D-017 · 2026-10-27 · Qualifier loss is measured on the text, not on the receiver's self-report**
+In the pilot, one receiver wrote "as of the latest extract date" and then declared `qualifier=no`. The
+declared status is recorded but never trusted alone; a rubric scores the text, and disagreements are
+adjudicated.

@@ -98,6 +98,14 @@ what H2 measures.
 6. `latency_end_to_end`, with decode calls visible.
 7. `parse_failures` and `retry_cost`.
 8. `expansion_requests`: count and cost in A4; zero by construction in others (see threats).
+9. `finish_reason` per call, and `reasoning_tokens` where the provider reports them. Added after the
+   pilot (docs/08-pilot.md): a reasoning model exhausted a 1,500-token budget on internal reasoning in
+   5 of 12 exchanges and returned an empty message. A harness that scores an empty completion as
+   "receiver ignored the payload" manufactures a result. Empty completions are a separate outcome and
+   never a silent zero.
+10. `declared_status` versus `rubric_qualifier`. The pilot found a case where the receiver's own
+    `qualifier=no` trailer contradicted its prose, which correctly reported staleness. Scoring uses the
+    rubric; the self-report is recorded as a separate, weaker signal.
 
 ---
 

@@ -1,0 +1,11 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash",
+  "instances": 6,
+  "arms": [
+    "nl",
+    "ir"
+  ],
+  "exchanges": 12,
+  "tokens_total": 23682,
+  "wall_clock_s": 111.2
+}
