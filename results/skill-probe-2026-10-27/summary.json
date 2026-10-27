@@ -1,0 +1,11 @@
+{
+  "models": [
+    "z-ai/glm-5.3-flash",
+    "deepseek/deepseek-v4.1-flash-1017",
+    "openai/gpt-6-luna",
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "xiaomi/mimo-v2.6-flash"
+  ],
+  "rows": 20,
+  "total_cost_usd": 0.00822
+}

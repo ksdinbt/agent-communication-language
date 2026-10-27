@@ -105,3 +105,13 @@ reasoning overhead.
 In the pilot, one receiver wrote "as of the latest extract date" and then declared `qualifier=no`. The
 declared status is recorded but never trusted alone; a rubric scores the text, and disagreements are
 adjudicated.
+
+**D-018 · 2026-10-27 · The skill is a behaviour mechanism, not a cost mechanism, and EXPAND needs a contract**
+A five-model probe (`09-skill-probe.md`) found the skill condition produced no wrong answers (5 of 5
+produced answers preserved the qualifier) but 3 of 8 exchanges returned empty content, all
+`finish_reason=length` with the reasoning budget exhausted. `max_tokens` therefore becomes a
+per-condition parameter and an empty completion is never scored as a behavioural failure. `!EXPAND`
+appeared in 3 of 4 deferred cases and spuriously in 2 of 4 non-deferred ones, so the receiver's output
+becomes a validated decision object rather than prose.
+*Would be overturned by:* a probe with n>=20 per cell in which the skill condition is cheaper and
+equally accurate in a one-message session.

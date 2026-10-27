@@ -1,0 +1,31 @@
+{
+  "silp": "v1",
+  "version": "ir-v0.1",
+  "intent": "!EXPAND",
+  "entities": [
+    {
+      "id": "ref",
+      "value": "r1",
+      "action": "!EXPAND"
+    },
+    {
+      "id": "granularity",
+      "value": "daily",
+      "action": "!EXPAND"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "reason",
+      "value": "need within-week shape to judge period partiality"
+    }
+  ],
+  "alternatives": [],
+  "meta": {
+    "req_id": "8f2c1a0e"
+  },
+  "ext": {
+    "ext_version": "e4-v0.1",
+    "authority": "REQUEST"
+  }
+}

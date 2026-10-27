@@ -1,0 +1,22 @@
+{
+  "silp": "v1",
+  "version": "ir-v0.1",
+  "intent": "!ASSERT",
+  "entities": [
+    {
+      "id": "act",
+      "value": "turnover_2026-W41",
+      "action": "!ASSERT"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "segment",
+      "value": "sports"
+    }
+  ],
+  "alternatives": [],
+  "meta": {
+    "req_id": "8f2c1a0e"
+  }
+}

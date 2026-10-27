@@ -1,0 +1,30 @@
+{
+  "silp": "v1",
+  "version": "ir-v0.1",
+  "intent": "!CANNOT_EXPAND",
+  "entities": [
+    {
+      "id": "act",
+      "value": "turnover_2026-W41",
+      "action": "!CANNOT_EXPAND"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "segment",
+      "value": "sports"
+    }
+  ],
+  "alternatives": [],
+  "meta": {
+    "req_id": "8f2c1a0e"
+  },
+  "ext": {
+    "ext_version": "e4-v0.1",
+    "authority": "INFORM",
+    "qualifier": {
+      "type": "sample_too_small",
+      "note": "no daily split below 500 rows"
+    }
+  }
+}

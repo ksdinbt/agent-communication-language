@@ -1,0 +1,10 @@
+{
+  "defer-valid.json": true,
+  "defer-invalid-constraint.json": false,
+  "defer-no-refs.json": false,
+  "epistemic-missing.json": false,
+  "observed-no-time.json": false,
+  "expand-request.json": true,
+  "cannot-expand.json": true,
+  "degraded-plain.json": true
+}
